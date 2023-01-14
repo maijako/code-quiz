@@ -20,7 +20,6 @@ var submitButtonEl = document.getElementById("submit");
 var feedbackEl = document.getElementById("feedback");
 
 
-
 //eventlistener
 startButtonEl.addEventListener("click", countdown);
 //This is the timer, and I want it to start when I click on the button (eventlistener)
