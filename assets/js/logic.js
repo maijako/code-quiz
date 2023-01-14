@@ -5,7 +5,6 @@
 // When the game ends, it should display their score and give the user the ability to save
 // their initials and their score
 
-
 //Set variables
 var timerEl = document.getElementById("time");
 var startScreenEl = document.getElementById("start-screen");
@@ -20,7 +19,7 @@ var submitButtonEl = document.getElementById("submit");
 var feedbackEl = document.getElementById("feedback");
 
 
-//eventlistener
+//Eventlistener
 startButtonEl.addEventListener("click", countdown);
 //This is the timer, and I want it to start when I click on the button (eventlistener)
 function countdown() {
@@ -32,9 +31,21 @@ function countdown() {
           clearInterval(timeInterval);
         }
     }, 1000);
+    startScreenEl.remove();
   }
 
-//   countdown();
+//Function to display question after the start button is clicked
+// function begin () {
+    
+//     var buttonEl = event.target;
+//     if (buttonEl.matches("button")) {
+//       var parentEl = buttonEl.parentElement;
+//       var indexOfEl = parentEl.dataset.index;
+//       todos.splice(indexOfEl, 1);
+//       storeTodos();
+//       renderTodos();
+//     }
+//   })
 
 
   
