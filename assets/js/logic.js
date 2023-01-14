@@ -1,10 +1,3 @@
-// Questions contain buttons for each answer.
-// When answer is clicked, the next question appears
-// If the answer clicked was incorrect then subtract time from the clock
-// The quiz should end when all questions are answered or the timer reaches 0.
-// When the game ends, it should display their score and give the user the ability to save
-// their initials and their score
-
 //Set variables
 var timerEl = document.getElementById("time");
 var startScreenEl = document.getElementById("start-screen");
@@ -21,7 +14,7 @@ var feedbackEl = document.getElementById("feedback");
 
 //Eventlistener
 startButtonEl.addEventListener("click", countdown);
-//This is the timer, and I want it to start when I click on the button (eventlistener)
+//Function to start countdown
 function countdown() {
     var timeLeft = 75;
     var timeInterval = setInterval(function () {
@@ -33,13 +26,31 @@ function countdown() {
     }, 1000);
     startScreenEl.remove();
     startQuiz();
+    displayOptions();
   }
+
 //function to start quiz
   function startQuiz () {
     questions.setAttribute("class", "display");
     titleEl.textContent = quest1.title;
-    choicesEl.
   }
+
+  //function to create options buttons
+  function displayOptions () {
+    var listEl = document.createElement("ol");
+    choicesEl.appendChild(listEl);
+    var li1 = document.createElement("li");
+    var li2 = document.createElement("li");
+    var li3 = document.createElement("li");
+    var li4 = document.createElement("li");
+    var listItems = [li1, li2, li3, li4];
+  for (var i = 0; i < 4; i++) {
+    listItems[i].textContent = quest1.choices[i];
+    listEl.appendChild(listItems[i]);
+    };
+  }
+
+ 
 
 
 
