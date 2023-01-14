@@ -36,8 +36,5 @@ function countdown() {
 
 //   countdown();
 
-//I need questions and 4 mc answers
-//Store Questions and Answers as an object 
-//Options would be an array
 
   
