@@ -11,11 +11,10 @@ var playerInitEl = document.getElementById("initials");
 var submitButtonEl = document.getElementById("submit");
 var feedbackEl = document.getElementById("feedback");
 
-
 //Eventlistener
-startButtonEl.addEventListener("click", countdown);
-//Function to start countdown
-function countdown() {
+startButtonEl.addEventListener("click", beginQuiz);
+//Function to begin quiz
+function beginQuiz() {
     var timeLeft = 75;
     var timeInterval = setInterval(function () {
       timeLeft--;
@@ -25,14 +24,14 @@ function countdown() {
         }
     }, 1000);
     startScreenEl.remove();
-    startQuiz();
+    displayQuestion();
     displayOptions();
   }
 
 //function to start quiz
-  function startQuiz () {
+  function displayQuestion () {
     questions.setAttribute("class", "display");
-    titleEl.textContent = quest1.title;
+    titleEl.textContent = quest1.title; //add a for loop here to loop through the five questions in the questions js
   }
 
   //function to create options buttons
@@ -45,7 +44,7 @@ function countdown() {
     var li4 = document.createElement("li");
     var listItems = [li1, li2, li3, li4];
   for (var i = 0; i < 4; i++) {
-    listItems[i].textContent = quest1.choices[i];
+    listItems[i].textContent = quest1.choices[i]; //add a for loop here to loop through the five sets of options, and to put them all in buttons and add logic to change to next question onclick, and to reduce timer by 10 if wrong
     listEl.appendChild(listItems[i]);
     };
   }
