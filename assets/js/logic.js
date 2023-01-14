@@ -32,7 +32,16 @@ function countdown() {
         }
     }, 1000);
     startScreenEl.remove();
+    startQuiz();
   }
+//function to start quiz
+  function startQuiz () {
+    questions.setAttribute("class", "display");
+    titleEl.textContent = quest1.title;
+    choicesEl.
+  }
+
+
 
 //Function to display question after the start button is clicked
 // function begin () {
