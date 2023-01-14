@@ -27,14 +27,13 @@ function beginQuiz() {
     displayQuestion();
     displayOptions();
   }
-
-//function to start quiz
+//function to display questions
   function displayQuestion () {
     questions.setAttribute("class", "display");
     titleEl.textContent = quest1.title; //add a for loop here to loop through the five questions in the questions js
   }
 
-  //function to create options buttons
+//function to display options within buttons
   function displayOptions () {
     var listEl = document.createElement("ol");
     choicesEl.appendChild(listEl);
@@ -49,22 +48,5 @@ function beginQuiz() {
     };
   }
 
- 
-
-
-
-//Function to display question after the start button is clicked
-// function begin () {
-    
-//     var buttonEl = event.target;
-//     if (buttonEl.matches("button")) {
-//       var parentEl = buttonEl.parentElement;
-//       var indexOfEl = parentEl.dataset.index;
-//       todos.splice(indexOfEl, 1);
-//       storeTodos();
-//       renderTodos();
-//     }
-//   })
-
-
+  //and if statement or function somewhere to make timer cut by 10 seconds when the wrong option is selected;
   
