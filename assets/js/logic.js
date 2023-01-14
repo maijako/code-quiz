@@ -22,7 +22,7 @@ var feedbackEl = document.getElementById("feedback");
 
 
 //eventlistener
-document.addEventListener("click", countdown);
+startButtonEl.addEventListener("click", countdown);
 //This is the timer, and I want it to start when I click on the button (eventlistener)
 function countdown() {
     var timeLeft = 75;
