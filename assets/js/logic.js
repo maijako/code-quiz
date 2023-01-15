@@ -1,4 +1,4 @@
-//Set variables
+//Variables to get elements by ID
 var timerEl = document.getElementById("time");
 var startScreenEl = document.getElementById("start-screen");
 var startButtonEl = document.getElementById("start");
@@ -10,6 +10,14 @@ var scoreEl = document.getElementById("final-score");
 var playerInitEl = document.getElementById("initials");
 var submitButtonEl = document.getElementById("submit");
 var feedbackEl = document.getElementById("feedback");
+
+//Variables to create button elements for options
+var opt1 = document.createElement("button");
+var opt2 = document.createElement("button");
+var opt3 = document.createElement("button");
+var opt4 = document.createElement("button");
+//An array of option buttons
+var optItems = [opt1, opt2, opt3, opt4];
 
 //Eventlistener
 startButtonEl.addEventListener("click", beginQuiz);
@@ -28,51 +36,21 @@ function beginQuiz() {
   displayQuestion();
 }
 
-//function to display question
+//Function to display quiz questions 1 by 1
 function displayQuestion () {
   questEl.setAttribute("class", "display");
-  var opt1 = document.createElement("button");
-  var opt2 = document.createElement("button");
-  var opt3 = document.createElement("button");
-  var opt4 = document.createElement("button");
-  var optItems = [opt1, opt2, opt3, opt4];
   for (var i = 0; i < optItems.length; i++){
     choicesEl.appendChild(optItems[i]);
     for (var k = 0; k < questList.length; k++) {
       titleEl.textContent = questList[k].title
       optItems[i].textContent = questList[k].choices[i];
-     }
+    }
   }
+  questList.length = questList.length-1;
 }
+//Event listeners for option buttons
+opt1.addEventListener("click", displayQuestion);
+opt2.addEventListener("click", displayQuestion);
+opt3.addEventListener("click", displayQuestion);
+opt4.addEventListener("click", displayQuestion);
 
-
-
-//function to display options
-// function displayOptions () {
-//   var opt1 = document.createElement("button");
-//   var opt2 = document.createElement("button");
-//   var opt3 = document.createElement("button");
-//   var opt4 = document.createElement("button");
-//   var optItems = [opt1, opt2, opt3, opt4];
-//   for (var i = 0; i < optItems.length; i++){
-//     optItems[i].textContent = questList[i].choices[i];
-//     choicesEl.appendChild(optItems[i])
-//   }
-// }
-    
-  //   function displayQuestion () {
-  //     questEl.setAttribute("class", "display");
-  //     for (var i = 0; i < questList.length; i++){
-  //       titleEl.textContent = questList[i].title;
-  //      }
-  //     }
-  //     optItems.addEventListener("click", displayQuestion, displayOptions);
-  // }
-
-// //function to display next question when a button is clicked
-// function nextQuestion() {
-//   optItems.addEventListener("click", displayOptions);
-// }
-
-  // and add logic to change to next question onclick, and to reduce timer by 10 if wrong
-  //and if statement or function somewhere to make timer cut by 10 seconds when the wrong option is selected;
