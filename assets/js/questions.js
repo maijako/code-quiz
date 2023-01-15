@@ -41,5 +41,5 @@ var ans5 = quest5.choices[quest5.correctAns];
 var questList = [quest1, quest2, quest3, quest4, quest5];
 
 
-
+var correctAnswers = [ans1, ans2, ans3, ans4, ans5];
 

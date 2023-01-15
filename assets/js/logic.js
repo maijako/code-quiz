@@ -16,6 +16,7 @@ var opt1 = document.createElement("button");
 var opt2 = document.createElement("button");
 var opt3 = document.createElement("button");
 var opt4 = document.createElement("button");
+
 //An array of option buttons
 var optItems = [opt1, opt2, opt3, opt4];
 
@@ -48,9 +49,30 @@ function displayQuestion () {
   }
   questList.length = questList.length-1;
 }
+
 //Event listeners for option buttons
-opt1.addEventListener("click", displayQuestion);
-opt2.addEventListener("click", displayQuestion);
-opt3.addEventListener("click", displayQuestion);
-opt4.addEventListener("click", displayQuestion);
+for (i = 0; i < optItems.length; i++){
+optItems[i].addEventListener("click", displayQuestion);
+}
+
+
+
+//Logic to display question feedback
+function displayFeedback () {
+  feedbackEl.setAttribute("class", "feedback");
+  if( ){
+    feedbackEl.textContent = "Correct!"
+  } else {
+    feedbackEl.textContent = "Wrong!"
+    //add timer to remove 10 seconds
+  }
+}
+
+
+
+//remember to add sounds to feedback if right or wrong
+//Event listeners to display feedback
+for (i = 0; i < optItems.length; i++){
+  optItems[i].addEventListener("click", displayFeedback);
+  }
 
