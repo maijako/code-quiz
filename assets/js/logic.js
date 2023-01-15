@@ -13,6 +13,7 @@ var feedbackEl = document.getElementById("feedback");
 
 //Eventlistener
 startButtonEl.addEventListener("click", beginQuiz);
+
 //Function to begin quiz
 function beginQuiz() {
     var timeLeft = 75;
@@ -27,26 +28,50 @@ function beginQuiz() {
     displayQuestion();
     displayOptions();
   }
+
 //function to display questions
   function displayQuestion () {
-    questions.setAttribute("class", "display");
-    titleEl.textContent = quest1.title; //add a for loop here to loop through the five questions in the questions js
+    questEl.setAttribute("class", "display");
+    titleEl.textContent = quest1.title; //add a for loop here to loop through the five questions in the questions js, use the questList variable created in questions.js
   }
 
 //function to display options within buttons
-  function displayOptions () {
-    var listEl = document.createElement("ol");
-    choicesEl.appendChild(listEl);
-    var li1 = document.createElement("li");
-    var li2 = document.createElement("li");
-    var li3 = document.createElement("li");
-    var li4 = document.createElement("li");
-    var listItems = [li1, li2, li3, li4];
-  for (var i = 0; i < 4; i++) {
-    listItems[i].textContent = quest1.choices[i]; //add a for loop here to loop through the five sets of options, and to put them all in buttons and add logic to change to next question onclick, and to reduce timer by 10 if wrong
-    listEl.appendChild(listItems[i]);
-    };
-  }
+  // function displayOptions () {
+  //   var opt1 = document.createElement("button");
+  //   var opt2 = document.createElement("button");
+  //   var opt3 = document.createElement("button");
+  //   var opt4 = document.createElement("button");
+  //   var optItems = [opt1, opt2, opt3, opt4];
+  // for (var i = 0; i < 4; i++) {
+  //   optItems[i].textContent = quest1.choices[i];
+  //   choicesEl.appendChild(optItems[i]);
+  //   };
+  // }
+ 
 
+  // function displayOptions on click of a button () {
+    //a for loop to display all questions
+    // for (var i = 0; i<questList.length; i++){
+    //   questList[i];
+    var opt1 = document.createElement("button");
+    var opt2 = document.createElement("button");
+    var opt3 = document.createElement("button");
+    var opt4 = document.createElement("button");
+    var optItems = [opt1, opt2, opt3, opt4];
+    for (var i = 0; i < optItems.length; i++){
+      optItems[i].textContent = questList[i].choices[i];
+      console.log(questList[i].choices[i]);
+    }
+    // }
+     
+
+
+// //function to display next question when a button is clicked
+// function nextQuestion() {
+//   optItems.addEventListener("click", displayOptions);
+// }
+
+
+
+  // and add logic to change to next question onclick, and to reduce timer by 10 if wrong
   //and if statement or function somewhere to make timer cut by 10 seconds when the wrong option is selected;
-  
