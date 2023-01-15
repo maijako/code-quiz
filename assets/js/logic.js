@@ -26,16 +26,11 @@ function beginQuiz() {
       }, 1000);
   startScreenEl.remove();
   displayQuestion();
-  displayOptions();
 }
 
-// function to display questions
+//function to display question
 function displayQuestion () {
   questEl.setAttribute("class", "display");
-}
-
-//function to display options
-function displayOptions () {
   var opt1 = document.createElement("button");
   var opt2 = document.createElement("button");
   var opt3 = document.createElement("button");
