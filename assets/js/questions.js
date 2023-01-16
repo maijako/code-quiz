@@ -29,17 +29,7 @@ var quest5 = {
   correctAns: 3
 };
 
-//variables to store correct answers
-var ans1 = quest1.choices[quest1.correctAns];
-var ans2 = quest2.choices[quest2.correctAns];
-var ans3 = quest3.choices[quest3.correctAns];
-var ans4 = quest4.choices[quest4.correctAns];
-var ans5 = quest5.choices[quest5.correctAns];
-
-
 //a variable to store all question objects
 var questList = [quest1, quest2, quest3, quest4, quest5];
 
-
-var correctAnswers = [ans1, ans2, ans3, ans4, ans5];
 

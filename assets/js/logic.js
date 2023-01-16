@@ -23,8 +23,16 @@ opt4.setAttribute("id", 3);
 //An array of option buttons
 var optItems = [opt1, opt2, opt3, opt4];
 
-//Eventlistener
+//A variable for question number
+var currentQuestIndex = 0;
+
+//Eventlistener:
+//To begin quiz
 startButtonEl.addEventListener("click", beginQuiz);
+//To display feedback
+for (var i = 0; i < optItems.length; i++) {
+  optItems[i].addEventListener("click", displayFeedback);
+}
 
 //Function to begin quiz
 function beginQuiz() {
@@ -32,49 +40,54 @@ function beginQuiz() {
   var timeInterval = setInterval(function () {
     timeLeft--;
     timerEl.textContent = timeLeft;
-      if(timeLeft === 0) {
-        clearInterval(timeInterval);
-      }
-      }, 1000);
+    if (timeLeft === 0) {
+      clearInterval(timeInterval);
+    }
+  }, 1000);
   startScreenEl.remove();
   displayQuestion();
 }
 
-//Function to display quiz questions 1 by 1
-function displayQuestion () {
+//Function to display quiz questions
+function displayQuestion(){
   questEl.setAttribute("class", "display");
-  for (var i = 0; i < optItems.length; i++){
+  let question = questList[currentQuestIndex];
+  titleEl.textContent = question.title;
+  
+  for (var i = 0; i < optItems.length; i++) {
     choicesEl.appendChild(optItems[i]);
-    for (var k = 0; k < questList.length; k++) {
-      titleEl.textContent = questList[k].title
-      optItems[i].textContent = questList[k].choices[i];
-    }
+    optItems[i].textContent = question.choices[i];
   }
-  questList.length = questList.length-1;
 }
 
-//Event listeners for option buttons
-for (i = 0; i < optItems.length; i++){
-optItems[i].addEventListener("click", displayQuestion);
-}
+//Function to cycle on to next question
+function nextQuestion (){
+  currentQuestIndex = currentQuestIndex+1;
+  if(currentQuestIndex < questList.length){
+  displayQuestion();
+  }else{
+    questEl.remove();
+    feedbackEl.remove();
+    endEl.setAttribute("class", "display");
+    //stop timer
+  }
+ }
 
-//Logic to display question feedback
+//Function to display question feedback
+function displayFeedback(event) {
+  var userAnswer = event.target.id;
+  feedbackEl.setAttribute("class", "feedback");
+  if (userAnswer == questList[currentQuestIndex].correctAns){
+    feedbackEl.textContent = "Correct!"
+  }else{
+    feedbackEl.textContent = "Wrong!"
+    //-10 seconds from timer
+  }
+  nextQuestion();
+ }
+
+
 //remember to add sounds to feedback if right or wrong
-// function displayFeedback () {
-//   feedbackEl.setAttribute("class", "feedback");
-//   if(){
-//     feedbackEl.textContent = "Correct!"
-//   } else {
-//     feedbackEl.textContent = "Wrong!"
-//     //timer to remove 10 seconds
-//   }
-// }
-// //Event listeners to display feedback
-// for (i = 0; i < optItems.length; i++){
-//   optItems[i].addEventListener("click", displayFeedback);
-//   }
-
 //timer to stop when questions stop
-//user to be prompted to enter initials
 
 
