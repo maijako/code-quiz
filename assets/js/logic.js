@@ -89,6 +89,7 @@ function displayFeedback(event) {
   }else{
     feedbackEl.textContent = "Wrong!";
     incorrectAudio();
+    timeLeft = timeLeft-10;
   }
   nextQuestion();
  }
