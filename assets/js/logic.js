@@ -23,7 +23,7 @@ opt4.setAttribute("id", 3);
 //An array of option buttons
 var optItems = [opt1, opt2, opt3, opt4];
 
-//A variable to set timer
+//A variable to set time that's left (it will also be the user score)
 var timeLeft = 75;
 
 //A variable for question number
@@ -54,12 +54,6 @@ function beginQuiz() {
   displayQuestion();
 }
 
-
-
-//A variable to store user score
-var userScore;
-
-
 //Function to display quiz questions
 function displayQuestion(){
   questEl.setAttribute("class", "display");
@@ -82,8 +76,6 @@ function nextQuestion (){
     feedbackEl.remove();
     endEl.setAttribute("class", "display");
     beginQuiz.pauseTimer();
-    
-    //stop timer
   }
  }
 
@@ -97,7 +89,6 @@ function displayFeedback(event) {
   }else{
     feedbackEl.textContent = "Wrong!";
     incorrectAudio();
-    timeLeft = timeLeft-10;
   }
   nextQuestion();
  }
@@ -113,6 +104,7 @@ function incorrectAudio() {
   var audio = new Audio('./assets/sfx/incorrect.wav');
   audio.play();
 }
+//TODO: store user initials, display them in high scores, clear scores on hitting clear button
 
 
 
