@@ -20,6 +20,7 @@ opt1.setAttribute("id", 0);
 opt2.setAttribute("id", 1);
 opt3.setAttribute("id", 2);
 opt4.setAttribute("id", 3);
+
 //An array of option buttons
 var optItems = [opt1, opt2, opt3, opt4];
 
@@ -106,18 +107,22 @@ function incorrectAudio() {
   var audio = new Audio('./assets/sfx/incorrect.wav');
   audio.play();
 }
+//An array to store all player data
+allScores = [];
+
+//A function to save player scores
+function saveScore() {
+var newScore = {
+  initials: initialsInput.value,
+  score: timeLeft
+}
+allScores.push(newScore);
+localStorage.setItem("scores", JSON.stringify(allScores));
+}
 
 //Event listener to store user initials and scores
 submitButtonEl.addEventListener("click", function(event){
   event.preventDefault();
- var player = {
-    userInitials: initialsInput.value,
-    userScore: scoreEl.textContent
- }
-  localStorage.setItem("player", player.userInitials + " - " + player.userScore);
-  initialsInput.value = "";
+  saveScore();
+  window.location.href = "./pages/highscores.html";
 });
-
-
-
-
