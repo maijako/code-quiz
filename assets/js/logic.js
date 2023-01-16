@@ -107,20 +107,17 @@ function incorrectAudio() {
   audio.play();
 }
 
-//Event listener to get user initials and scores
+//Event listener to store user initials and scores
 submitButtonEl.addEventListener("click", function(event){
   event.preventDefault();
-  var userInitials = initialsInput.value;
-  var userScore = scoreEl.textContent;
-  localStorage.setItem("initials", userInitials);
-  localStorage.setItem("score", userScore);
+ var player = {
+    userInitials: initialsInput.value,
+    userScore: scoreEl.textContent
+ }
+  localStorage.setItem("player", player.userInitials + " - " + player.userScore);
   initialsInput.value = "";
 });
 
-
-//TODO: store user initials and timeLeft scores
-//TODO: display user initials and their timeLeft in high scores
-//TODO: clear all user scores on hitting clear button
 
 
 
