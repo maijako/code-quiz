@@ -46,9 +46,19 @@ function beginQuiz() {
       clearInterval(timeInterval);
     }
   }, 1000);
+  function pauseTimer(){
+    clearInterval(timeInterval);
+  }
+  beginQuiz.pauseTimer = pauseTimer;
   startScreenEl.remove();
   displayQuestion();
 }
+
+
+
+//A variable to store user score
+var userScore;
+
 
 //Function to display quiz questions
 function displayQuestion(){
@@ -71,6 +81,8 @@ function nextQuestion (){
     questEl.remove();
     feedbackEl.remove();
     endEl.setAttribute("class", "display");
+    beginQuiz.pauseTimer();
+    
     //stop timer
   }
  }
@@ -102,6 +114,5 @@ function incorrectAudio() {
   audio.play();
 }
 
-//timer to stop when questions stop
 
 
