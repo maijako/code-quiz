@@ -23,20 +23,22 @@ opt4.setAttribute("id", 3);
 //An array of option buttons
 var optItems = [opt1, opt2, opt3, opt4];
 
+//A variable to set timer
+var timeLeft = 75;
+
 //A variable for question number
 var currentQuestIndex = 0;
 
-//Eventlistener:
-  //To begin quiz
+//EventListeners:
+  //--to begin quiz
 startButtonEl.addEventListener("click", beginQuiz);
-  //To display feedback
+  //--to display feedback
 for (var i = 0; i < optItems.length; i++) {
   optItems[i].addEventListener("click", displayFeedback);
 }
 
 //Function to begin quiz
 function beginQuiz() {
-  var timeLeft = 75;
   var timeInterval = setInterval(function () {
     timeLeft--;
     timerEl.textContent = timeLeft;
@@ -51,7 +53,7 @@ function beginQuiz() {
 //Function to display quiz questions
 function displayQuestion(){
   questEl.setAttribute("class", "display");
-  let question = questList[currentQuestIndex];
+  var question = questList[currentQuestIndex];
   titleEl.textContent = question.title;
   
   for (var i = 0; i < optItems.length; i++) {
@@ -83,7 +85,7 @@ function displayFeedback(event) {
   }else{
     feedbackEl.textContent = "Wrong!";
     incorrectAudio();
-    //-10 seconds from timer
+    timeLeft = timeLeft-10;
   }
   nextQuestion();
  }
@@ -100,7 +102,6 @@ function incorrectAudio() {
   audio.play();
 }
 
-//remember to add sounds to feedback if right or wrong
 //timer to stop when questions stop
 
 
