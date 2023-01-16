@@ -76,6 +76,7 @@ function nextQuestion (){
     feedbackEl.remove();
     endEl.setAttribute("class", "display");
     beginQuiz.pauseTimer();
+    scoreEl.textContent = timeLeft;
   }
  }
 
@@ -105,7 +106,9 @@ function incorrectAudio() {
   var audio = new Audio('./assets/sfx/incorrect.wav');
   audio.play();
 }
-//TODO: store user initials, display them in high scores, clear scores on hitting clear button
+//TODO: store user initials and timeLeft scores
+//TODO: display user initials and their timeLeft in high scores
+//TODO: clear all user scores on hitting clear button
 
 
 
