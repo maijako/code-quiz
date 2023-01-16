@@ -7,7 +7,7 @@ var titleEl = document.getElementById("question-title");
 var choicesEl = document.getElementById("choices");
 var endEl = document.getElementById("end-screen");
 var scoreEl = document.getElementById("final-score");
-var playerInitEl = document.getElementById("initials");
+var initialsInput = document.getElementById("initials");
 var submitButtonEl = document.getElementById("submit");
 var feedbackEl = document.getElementById("feedback");
 
@@ -106,6 +106,18 @@ function incorrectAudio() {
   var audio = new Audio('./assets/sfx/incorrect.wav');
   audio.play();
 }
+
+//Event listener to get user initials and scores
+submitButtonEl.addEventListener("click", function(event){
+  event.preventDefault();
+  var userInitials = initialsInput.value;
+  var userScore = scoreEl.textContent;
+  localStorage.setItem("initials", userInitials);
+  localStorage.setItem("score", userScore);
+  initialsInput.value = "";
+});
+
+
 //TODO: store user initials and timeLeft scores
 //TODO: display user initials and their timeLeft in high scores
 //TODO: clear all user scores on hitting clear button
