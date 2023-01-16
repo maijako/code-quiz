@@ -27,9 +27,9 @@ var optItems = [opt1, opt2, opt3, opt4];
 var currentQuestIndex = 0;
 
 //Eventlistener:
-//To begin quiz
+  //To begin quiz
 startButtonEl.addEventListener("click", beginQuiz);
-//To display feedback
+  //To display feedback
 for (var i = 0; i < optItems.length; i++) {
   optItems[i].addEventListener("click", displayFeedback);
 }
@@ -78,14 +78,27 @@ function displayFeedback(event) {
   var userAnswer = event.target.id;
   feedbackEl.setAttribute("class", "feedback");
   if (userAnswer == questList[currentQuestIndex].correctAns){
-    feedbackEl.textContent = "Correct!"
+    feedbackEl.textContent = "Correct!";
+    correctAudio();
   }else{
-    feedbackEl.textContent = "Wrong!"
+    feedbackEl.textContent = "Wrong!";
+    incorrectAudio();
     //-10 seconds from timer
   }
   nextQuestion();
  }
 
+ //Function to play 'correct!' sound
+ function correctAudio() {
+  var audio = new Audio('./assets/sfx/correct.wav');
+  audio.play();
+}
+
+//Function to play 'wrong!' sound
+function incorrectAudio() {
+  var audio = new Audio('./assets/sfx/incorrect.wav');
+  audio.play();
+}
 
 //remember to add sounds to feedback if right or wrong
 //timer to stop when questions stop
