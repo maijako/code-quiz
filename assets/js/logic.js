@@ -30,10 +30,9 @@ var timeLeft = 75;
 //A variable for question number
 var currentQuestIndex = 0;
 
-//EventListeners:
-  //--to begin quiz
+//EventListener to begin quiz and to display feedback
 startButtonEl.addEventListener("click", beginQuiz);
-  //--to display feedback
+//EventListener to display feedback
 for (var i = 0; i < optItems.length; i++) {
   optItems[i].addEventListener("click", displayFeedback);
 }
