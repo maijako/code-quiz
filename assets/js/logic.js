@@ -107,18 +107,6 @@ function incorrectAudio() {
   var audio = new Audio('./assets/sfx/incorrect.wav');
   audio.play();
 }
-//An array to store all player data
-allScores = [];
-
-//A function to save player scores
-function saveScore() {
-var newScore = {
-  initials: initialsInput.value,
-  score: timeLeft
-}
-allScores.push(newScore);
-localStorage.setItem("scores", JSON.stringify(allScores));
-}
 
 //Event listener to store user initials and scores
 submitButtonEl.addEventListener("click", function(event){
@@ -126,3 +114,15 @@ submitButtonEl.addEventListener("click", function(event){
   saveScore();
   window.location.href = "./pages/highscores.html";
 });
+
+//A function to save player scores
+function saveScore() {
+var newScore = {
+  initials: initialsInput.value,
+  score: timeLeft
+}
+var allScores = JSON.parse(localStorage.getItem("scores")) || []
+allScores.push(newScore);
+localStorage.setItem("scores", JSON.stringify(allScores));
+}
+

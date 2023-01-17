@@ -1,12 +1,12 @@
 //set variables to get elements from doc
-var highscoresLi = document.getElementById("highscores");
+var scoresListEl = document.getElementById("highscores");
 var clearButtonEl = document.getElementById("clear");
 
 //get the scores object from local storage
-var localHighScores = localStorage.getItem("scores");
+var objectScores = localStorage.getItem("scores");
 
 //stringify it
-var highestScores = JSON.parse(localHighScores);
+var highestScores = JSON.parse(objectScores);
 
 //sort the list so that the highest score appears first
 highestScores.sort(function(a,b){return a.score - b.score});
@@ -16,13 +16,13 @@ highestScores.reverse();
 for(var i=0; i<highestScores.length; i++){
     var listItem = document.createElement("li");
     listItem.textContent = highestScores[i].initials+" - "+highestScores[i].score+" 🏆";
-    highscoresLi.appendChild(listItem);
+    scoresListEl.appendChild(listItem);
 }
-
+clearButtonEl.addEventListener("click", clearHighScores);
 //Function to clear highscores
 function clearHighScores() {
     localStorage.clear();
-    highscoresLi.remove();
+    scoresListEl.remove();
 }
-clearButtonEl.addEventListener("click", clearHighScores);
+
 
