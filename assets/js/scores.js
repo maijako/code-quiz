@@ -15,7 +15,7 @@ highestScores.reverse();
 //A for loop to add a list element for each player with their scores and initials displayed
 for(var i=0; i<highestScores.length; i++){
     var listItem = document.createElement("li");
-    listItem.textContent = highestScores[i].initials+" - "+highestScores[i].score+" 🏆";
+    listItem.textContent = " 🏆 "+highestScores[i].initials+" - "+highestScores[i].score;
     scoresListEl.appendChild(listItem);
 }
 clearButtonEl.addEventListener("click", clearHighScores);
