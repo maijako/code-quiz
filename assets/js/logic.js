@@ -45,6 +45,7 @@ function beginQuiz() {
     timerEl.textContent = timeLeft;
     if (timeLeft === 0) {
       clearInterval(timeInterval);
+      initialSubmit();
     }
   }, 1000);
   function pauseTimer(){
@@ -60,11 +61,19 @@ function displayQuestion(){
   questEl.setAttribute("class", "display");
   var question = questList[currentQuestIndex];
   titleEl.textContent = question.title;
-  
   for (var i = 0; i < optItems.length; i++) {
     choicesEl.appendChild(optItems[i]);
     optItems[i].textContent = question.choices[i];
   }
+}
+
+//Function to display initials submit form
+function initialSubmit () {
+  questEl.remove();
+    feedbackEl.remove();
+    endEl.setAttribute("class", "display");
+    beginQuiz.pauseTimer();
+    scoreEl.textContent = timeLeft;
 }
 
 //Function to cycle on to next question
@@ -73,11 +82,7 @@ function nextQuestion (){
   if(currentQuestIndex < questList.length){
   displayQuestion();
   }else{
-    questEl.remove();
-    feedbackEl.remove();
-    endEl.setAttribute("class", "display");
-    beginQuiz.pauseTimer();
-    scoreEl.textContent = timeLeft;
+    initialSubmit();
   }
  }
 
