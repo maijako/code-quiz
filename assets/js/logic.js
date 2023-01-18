@@ -99,6 +99,7 @@ function displayFeedback(event) {
       timeLeft = timeLeft-10;
     } else {
       timeLeft = 0;
+      timerEl.textContent = 0;
     }
   }
   nextQuestion();
