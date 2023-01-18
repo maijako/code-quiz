@@ -12,6 +12,7 @@ var submitButtonEl = document.getElementById("submit");
 var feedbackEl = document.getElementById("feedback");
 
 //Variables to create button elements for options
+
 var opt1 = document.createElement("button");
 var opt2 = document.createElement("button");
 var opt3 = document.createElement("button");
@@ -50,7 +51,7 @@ function beginQuiz() {
   function pauseTimer(){
     clearInterval(timeInterval);
   }
-  beginQuiz.pauseTimer = pauseTimer;
+  beginQuiz.pauseTimer = pauseTimer
   startScreenEl.remove();
   displayQuestion();
 }
@@ -78,7 +79,7 @@ function initialSubmit () {
 //Function to cycle on to next question
 function nextQuestion (){
   currentQuestIndex = currentQuestIndex+1;
-  if(currentQuestIndex < questList.length){
+  if(currentQuestIndex < questList.length && timeLeft !== 0){
   displayQuestion();
   }else{
     initialSubmit();
