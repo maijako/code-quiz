@@ -12,7 +12,6 @@ var submitButtonEl = document.getElementById("submit");
 var feedbackEl = document.getElementById("feedback");
 
 //Variables to create button elements for options
-
 var opt1 = document.createElement("button");
 var opt2 = document.createElement("button");
 var opt3 = document.createElement("button");
@@ -96,7 +95,11 @@ function displayFeedback(event) {
   }else{
     feedbackEl.textContent = "Wrong!";
     incorrectAudio();
-    timeLeft = timeLeft-10;
+    if (timeLeft >= 10) {
+      timeLeft = timeLeft-10;
+    } else {
+      timeLeft = 0;
+    }
   }
   nextQuestion();
  }
